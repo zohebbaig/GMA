@@ -1,0 +1,52 @@
+{% extends "GMA/base_sidebar.html" %}
+
+{% block page_block %}
+    <h3>{{ u.last_name }}, {{ u.first_name }} (<a href="mailto:{{ u.email }}">Email: {{ u.email }}</a>)</h3>
+    {% if is_friend %}
+        <form action="/user/id/{{ u.id }}/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action_type" value="remove">
+            <input class="btn btn-danger" type="submit" value="Remove from contacts" />
+        </form>
+    {% else %}
+        <form action="/user/id/{{ u.id }}/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action_type" value="add">
+            <input class="btn btn-primary" type="submit" value="Pin to contacts" />
+        </form>
+    {% endif %}
+
+    <div class="panel-info" style="margin-top: 20px">
+                <div class="panel-heading">Introduction</div>
+                <div class="panel-body">{{ u.profile.introduction }}</div>
+
+    <button id="toggle-button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#messaging_collapse">
+        <span class="glyphicon glyphicon-collapse-down"></span>Show Chat</button>
+    <div id="messaging_collapse" class="collapse">
+
+
+        <!-- HIDDEN FIELD USER ID -->
+        <input id="uid" type="hidden" name="uid" value="{{ u.id }}" />
+
+        <!-- SEND MESSAGE FORM -->
+        <form role="form" class="form-horizontal" id="message_form" method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="action_type" value="send">
+            <div class="input-group">
+                <input id="message_text" autocomplete="off" type="text" class="form-control" name="message" value="" size="100"/>
+            <span class="input-group-btn">
+            <input class="btn btn-primary" type="submit" name="submit" value="Send" />
+            </span>
+            </div>
+        </form>
+
+        <!-- SHOW MESSAGE LIST -->
+        <div id="messaging_div"></div>
+
+    </div>
+{% endblock %}
+
+{% block script_block %}
+    {% load static %}
+    <script src="{% static 'js/messaging_user.js' %}"></script>
+{% endblock %}

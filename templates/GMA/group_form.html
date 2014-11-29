@@ -1,0 +1,20 @@
+{% extends "GMA/base_sidebar.html" %}
+
+{% block page_block %}
+    {% if created %}
+        <h2>Your group has been saved!</h2>
+    {% endif %}
+    {% if group_id == -1 and created %}
+        <p>You can see your groups <a class="btn btn-info" href="/owned_groups/">here</a>.</p>
+    {% else %}
+    <form role="form" id="group_form" method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in group_form.visible_fields %}
+            {{ field.errors }}
+            <label>{{ field.help_text}}</label><br/>
+            <div class="form-group">{{ field }}</div><br/>
+        {% endfor %}
+        <input class="btn btn-success" type="submit" name="submit" value="Save" />
+    </form>
+    {% endif %}
+{% endblock %}

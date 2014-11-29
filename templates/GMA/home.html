@@ -1,0 +1,35 @@
+{% extends "GMA/base_sidebar.html" %}
+
+{% load static %}
+
+{% block title %}Welcome to GMA!{% endblock %}
+
+{% block page_block %}
+    <h3>Hi, {{ user.first_name }}</h3>
+    <hr/>
+
+    <h4>Your latest messages</h4>
+    <div class="container col-xs-12 container-sm-height">
+        <div class="row row-sm-height">
+            <div class="col-xs-12 col-sm-6 panel panel-info col-sm-height">
+                <div class="panel-heading">Personal messages</div>
+                <div class="panel-body">
+                    <td>
+                        {% for msg in personal_messages %}
+                            <p><a href="/user/id/{{ msg.sender.id }}/">{{ msg.sender.first_name }} {{ msg.sender.last_name }}</a> says
+                                "{{ msg.text }}"</p>
+                        {% endfor %}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 panel panel-info col-sm-height">
+                <div class="panel-heading">Group messages</div>
+                <div class="panel-body">
+                    {% for msg in group_messages %}
+                        <p><a href="/user/id/{{ msg.sender.id }}/">{{ msg.sender.first_name }} {{ msg.sender.last_name }}</a> says
+                            "{{ msg.text }}" to <a href="/group/id/{{ msg.recipient.group.id }}">{{ msg.recipient.group.name }}</a></p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

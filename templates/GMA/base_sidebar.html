@@ -1,0 +1,43 @@
+{% extends "GMA/base.html" %}
+
+{% block body_block %}
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="/">
+                    <span class="glyphicon glyphicon-home"></span>  Home</a></li>
+                <li> <a class="dropdown-toggle" data-toggle="collapse" href="#groups-menu">
+                    <span class="glyphicon glyphicon-list"></span>  Groups
+                    <span class="caret"></span>
+                </a>
+                    <ul id="groups-menu" class="collapse">
+                        <li><a href="/owned_groups/">My groups</a></li>
+                        <li><a href="/my_groups/">My memberships</a></li>
+                        <li><a href="/all_groups/">Browse all groups</a></li>
+                        <li><a href="/group/search/">Search group</a></li>
+                        <li><a href="/create_group/">Create group</a></li>
+                    </ul>
+                </li>
+                <li> <a class="dropdown-toggle" data-toggle="collapse" href="#users-menu">
+                    <span class="glyphicon glyphicon-user"></span>  Users
+                    <span class="caret"></span>
+                </a>
+                    <ul id="users-menu" class="collapse">
+                        <li><a href="/contacts/">My contacts</a></li>
+                        <li><a href="/all_users/">All users</a></li>
+                        <li><a href="/user/search/">Search users</a></li>
+                    </ul>
+                </li>
+                <li><a href="/profile/">
+                    <span class="glyphicon glyphicon-cog"></span>  Profile</a></li>
+                <li><a href="/about/">
+                    <span class="glyphicon glyphicon-tag"></span>  About</a></li>
+            </ul>
+        </div>
+
+        <div class="well col-sm-9 col-md-9 main" style="min-height: 70vh;">
+            {% block page_block %} This template is missing {% endblock %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "GMA/../GMA/base.html" %}
+
+{% block title %}Login to GMA{% endblock %}
+
+{% block body_block %}
+
+    <div class="container col-xs-6 col-xs-offset-3">
+        <h1>Login to GMA</h1>
+        <form role="form" class="span5" id="login_form" method="post" action="/login/">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            {% if bad_details %}
+                <div class="alert alert-warning">Your username and/or password were incorrect!</div>
+            {% elif disabled_account %}
+                <div class="alert alert-danger">Your GMA account is currently disabled; we can't log you in!</div>
+            {% endif %}
+
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="input-block-level form-control" placeholder="Username" name="username" value="" size="50"/>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="input-block-level form-control" placeholder="Password" name="password" value="" size="50"/>
+            </div>
+
+            <button class="btn btn-success" type="submit">Sign in</button>
+        </form>
+
+    </div>
+    <!-- /container -->
+{% endblock %}

@@ -1,0 +1,7 @@
+<div>
+    <table class="table table-striped">
+        {% for g in group_list %}
+            <tr><td><a href="/group/id/{{ g.id }}">{{ g.name }}</a></td></tr>
+        {% endfor %}
+    </table>
+</div>

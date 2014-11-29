@@ -1,0 +1,13 @@
+<ul class="list-group" style="margin-bottom: 0px">
+    {% for msg in messages %}
+        {% if msg.sender == user %}
+            <li class="list-group-item">
+                ({{ msg.time|date:'d/m H:i' }}) You say: {{ msg.text }}
+            </li>
+        {% else %}
+            <li class="list-group-item">
+                ({{ msg.time|date:'d/m H:i' }}) <a href="/user/id/{{ msg.sender.id }}">{{ msg.sender.first_name }}</a> says: {{ msg.text }}
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>

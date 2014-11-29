@@ -1,0 +1,24 @@
+{% extends 'GMA/base_sidebar.html' %}
+
+{% block page_block %}
+
+    <form class="form-horizontal">
+        <label>Group name</label>
+        {% if search_term %}
+            <input class="form-control" type="text" name="group_name" value="{{ search_term }}" id="s_group" />
+        {% else %}
+            <input class="form-control" type="text" name="group_name" value="" id="s_group" />
+        {% endif %}
+    </form>
+
+    <div id="search_results">
+        {% if groups %}
+            <table class="table">
+                {% for g in groups %}
+                    <tr><td><a href="/group/id/{{ g.id }}">{{ g.name }}</a></td></tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+
+{% endblock %}

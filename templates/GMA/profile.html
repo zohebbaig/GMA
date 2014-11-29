@@ -1,0 +1,45 @@
+{% extends "GMA/base_sidebar.html" %}
+
+{% block title %}Edit your profile!{% endblock %}
+
+{% block page_block %}
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <h1>View and edit your profile information</h1>
+        <br/>
+        {% if registered %}
+            <div class="alert alert-success">Your profile information has been successfully saved.</div>
+        {% endif %}
+        <form role="form" id="user_form" method="post" action="/profile/" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% for field in user_form.visible_fields %}
+                {{ field.errors }}
+                {% if field.errors %}
+                    <div class="has-error">
+                        {{ field.help_text}}<br/>
+                        {{ field }}<br/>
+                    </div>
+                {% else %}
+                    {{ field.help_text}}<br/>
+                    {{ field }}<br/>
+                {% endif %}
+            {% endfor %}
+
+            {% for field in profile_form.visible_fields %}
+                {{ field.errors }}
+                {% if field.errors %}
+                    <div class="has-error">
+                        {{ field.help_text}}<br/>
+                        {{ field }}<br/>
+                    </div>
+                {% else %}
+                    {{ field.help_text}}<br/>
+                    {{ field }}<br/>
+                {% endif %}
+            {% endfor %}
+
+            <!-- Provide a button to click to submit the form. -->
+            <input class="btn btn-success" type="submit" name="submit" value="Save changes"/>
+        </form>
+    </div>
+{% endblock %}

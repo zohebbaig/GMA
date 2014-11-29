@@ -1,0 +1,18 @@
+{% extends 'GMA/base_sidebar.html' %}
+
+{% block page_block %}
+
+    <form class="form-horizontal">
+        <table class="table table-responsive"><tr class="active">
+        <td><label>First name</label>
+            <input class="form-control" type="text" name="first_name" value="" id="s_fn"/></td>
+
+        <td><label>Last name</label>
+            <input class="form-control" type="text" name="last_name" value="" id="s_ln" /></td>
+        </table></tr>
+    </form>
+
+    <div id="search_results">
+    </div>
+
+{% endblock %}

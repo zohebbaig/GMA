@@ -1,0 +1,31 @@
+{% extends "GMA/base_sidebar.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block page_block %}
+
+    <div class="col-xs-12 panel panel-info">
+        <div class="panel-heading">About GMA</div>
+        <div class="panel-body">
+            <p>GMA is a <strong>Group Messaging Application</strong> where users can send messages to individuals or to groups.</p>
+            <p>This web application was written using Django & Python.</p>
+            <p>This application was designed and implemented by
+                <strong>Zoheb Baig, 2106503B, The University of Glasgow, MSc IT 2013-2014.</strong></p>
+        </div>
+    </div>
+
+    <hr/>
+
+    <div class="col-xs-12 panel panel-info">
+        <div class="panel-heading">Contact us</div>
+        <div class="panel-body">
+            <p>University of Glasgow</p>
+            <p>Glasgow</p>
+            <p>G12 8QQ</p>
+            <p>Email: <a href="mailto:zohebbaig@yahoo.com">zohebbaig@yahoo.com</a></p>
+        </div>
+    </div>
+
+    {% load static %}
+    <img src="{% static "img/GMA_light.png" %}" style="max-width: 100%; height: auto;" alt="Picture of GMA Logo"  />
+{% endblock %}

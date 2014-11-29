@@ -1,0 +1,12 @@
+{% extends "GMA/base_sidebar.html" %}
+
+{% block title %}{{ text }}{% endblock %}
+
+{% block page_block %}
+    <table class="table table-striped">
+        <tr class="info"><th>{{ text }}</th></tr>
+        {% for group in groups %}
+            <tr><td><a href="/group/id/{{ group.id }}">{{ group.name }}</a></td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}

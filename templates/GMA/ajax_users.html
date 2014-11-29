@@ -1,0 +1,7 @@
+<div>
+    <table class="table table-striped">
+        {% for u in user_list %}
+            <tr><td><a href="/user/id/{{ u.id }}">{{ u.last_name }}, {{ u.first_name }}</a></td></tr>
+        {% endfor %}
+    </table>
+</div>

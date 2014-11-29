@@ -1,0 +1,12 @@
+{% extends "GMA/base_sidebar.html" %}
+
+{% block title %}{{ text }}{% endblock %}
+
+{% block page_block %}
+    <table class="table table-striped">
+        <tr class="info"><th>{{ text }}</th></tr>
+        {% for u in users %}
+            <tr><td><a href="/user/id/{{ u.id }}">{{ u.last_name }}, {{ u.first_name }}</a></td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}
