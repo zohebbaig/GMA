@@ -11,7 +11,7 @@ DATABASE_PATH = os.path.join(PROJECT_PATH, 'GMA.db')
 SECRET_KEY = '&x*i(2hbh*7mqmws%e98shen8^gc*74rxz@i(ejrcat(b146@7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = False
 
 ADMINS = (

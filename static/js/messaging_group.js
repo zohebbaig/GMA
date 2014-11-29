@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    // QUERY NEW MESSAGES CONTINUOUSLY
+    // QUERY NEW MESSAGES CONTINUOUSLY, gets new messages continuously, AJAX get method from JQuery, infinite loop
     (function message_retriever() {
         $.ajax({
             url: '/ajax/messages/',
@@ -14,7 +14,9 @@ $(document).ready(function() {
         });
     })();
 
-    // OVERRIDE BROWSER DEFAULT POST SUBMIT FOR MESSAGING
+    // OVERRIDE BROWSER DEFAULT POST SUBMIT FOR MESSAGING, if press enter, doesnt do default, call method to get message text
+    // csrf cross-site request forgery token from the template, gets a unique hash token and send to post request, security feature
+    // post request not default, sets slimscroll to the top to show latest messages, clear send message to input box
     $('#message_form').on('submit', function(event){
         event.preventDefault();
         var msg_data={
@@ -28,6 +30,7 @@ $(document).ready(function() {
     });
 
     // SOURCE: Django docs https://docs.djangoproject.com/en/1.7/ref/contrib/csrf/
+    // Django documentation code for cookie handling, used for getting token
     function getCookie(name) {
         var cookieValue = null;
         if (document.cookie && document.cookie != '') {

@@ -6,23 +6,25 @@ from django.contrib.auth.decorators import login_required
 from messaging.models import Group, Message
 from messaging.forms import GroupForm
 
-
+#returns a list of groups that you are a member of, as a html page
 @login_required()
 def my_groups(request):
     text = "My memberships"
     return render_to_response('GMA/groups.html', {'text': text, 'groups': request.user.messaging_groups.all()}, RequestContext(request))
 
+#returns a list of all groups that are available on the GMA system, as a html page
 @login_required()
 def all_groups(request):
     text = "Browse all groups"
     return render_to_response('GMA/groups.html', {'text': text, 'groups': Group.objects.all()}, RequestContext(request))
 
+#returns a list of groups that you are an owner of, as a html page
 @login_required()
 def owned_groups(request):
     text = "Groups I created"
     return render_to_response('GMA/groups.html', {'text': text, 'groups': request.user.owned_groups.all()}, RequestContext(request))
 
-#Get request to pass group ID, add or remove member to group
+#Get a request to pass group ID, add or remove member to a group
 @login_required()
 def group_by_id(request, group_id):
     context_dict = {}

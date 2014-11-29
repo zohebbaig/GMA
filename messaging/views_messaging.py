@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from messaging.models import Message, Group
 
+#send a message to an individual user, called by AJAX
 @login_required()
 def send_message_to_user(request):
     user_id = request.POST.get("user_id")
@@ -16,6 +17,7 @@ def send_message_to_user(request):
 
     return HttpResponse()
 
+#send a message to a group, called by AJAX
 @login_required()
 def send_message_to_group(request):
     id = request.POST.get('group_id')
@@ -25,6 +27,7 @@ def send_message_to_group(request):
 
     return HttpResponse()
 
+#returning the AJAX messages
 @login_required()
 def get_messages_ajax(request):
     id = request.GET.get('group_id')
@@ -38,6 +41,7 @@ def get_messages_ajax(request):
 
     return render_to_response('GMA/ajax_messages.html', {'messages': messages}, RequestContext(request))
 
+#helper method to get the conversation between two users (individuals), order by time, Q class
 def get_conversation(user1, user2):
     crit1 = Q(sender=user1) & Q(recipient=user2.profile)
     crit2 = Q(sender=user2) & Q(recipient=user1.profile)

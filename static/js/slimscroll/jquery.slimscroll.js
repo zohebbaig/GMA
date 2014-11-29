@@ -3,7 +3,7 @@
  * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
  *
  * Version: 1.3.0
- *
+ * Plug in to add scroll bar to a large list of messages, to reference
  */
 (function($) {
 

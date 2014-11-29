@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    // slimscroll is a jQuery pluging which enables a scrollable div
+    // slimscroll is a jQuery pluging which enables a scrollable div, $ refers to an ID
     // source: http://rocha.la/jQuery-slimScroll
     $(function(){
         $('#messaging_div').slimScroll({
@@ -9,7 +9,7 @@ $(document).ready(function() {
         });
     });
 
-    // Swap label/icon on messaging drop-down
+    // Swap label/icon on messaging drop-down, dynamic to change drop down icon for show/hide
     $(function(){
         $('#messaging_collapse').on('hide.bs.collapse', function () {
             $('#toggle-button').html('<span class="glyphicon glyphicon-collapse-down"></span> Show Chat');
@@ -27,7 +27,8 @@ $(document).ready(function() {
         })
     })
 
-    // These are modifications of the examples in tango with django
+    // These are modifications of the examples in tango with django, input box, searching for key events, #refers to ID
+    //user search
     $('#s_fn').keyup(function(){
         $.get('/ajax/user_search/', {first_name: $('#s_fn').val(), last_name: $('#s_ln').val()}, function(data){
             $('#search_results').html(data);
@@ -40,6 +41,7 @@ $(document).ready(function() {
         });
     });
 
+//group search
     $('#s_group').keyup(function(){
         $.get('/ajax/group_search/', {group_name: $('#s_group').val()}, function(data){
             $('#search_results').html(data);
