@@ -29,7 +29,7 @@ urlpatterns = patterns('',
                        url(r'^user/id/(?P<user_id>\w+)/$', views_users.user_by_id, name='user_page'),
                        url(r'^user/search', views_users.search_user, name='user_search'),
 
-                       #AJAX
+                       #AJAX (listens to key strokes, sends new requests each time user hits a key, used for internal requests
                        url(r'^ajax/user_search/', views_users.ajax_search, name='ajax_user_search'),
                        url(r'^ajax/group_search/', views_groups.ajax_search, name='ajax_group_search'),
                        url(r'^ajax/messages/', views_messaging.get_messages_ajax, name='ajax_messages'),

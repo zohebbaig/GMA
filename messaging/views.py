@@ -91,6 +91,7 @@ def register(request):
     return render_to_response('GMA/register.html', context_dict, context)
 
 
+#uses a different form, passing instance for request user
 @login_required
 def profile(request):
     context = RequestContext(request)
@@ -113,7 +114,7 @@ def profile(request):
     context_dict['registered'] = registered
     return render_to_response('GMA/profile.html', context_dict, context)
 
-
+# save form and password, error handling
 def save_user_form(user_form, profile_form):
     if user_form.is_valid() and profile_form.is_valid():
         user = user_form.save()

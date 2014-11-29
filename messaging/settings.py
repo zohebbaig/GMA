@@ -11,8 +11,8 @@ DATABASE_PATH = os.path.join(PROJECT_PATH, 'GMA.db')
 SECRET_KEY = '&x*i(2hbh*7mqmws%e98shen8^gc*74rxz@i(ejrcat(b146@7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-TEMPLATE_DEBUG = True
+DEBUG = False
+TEMPLATE_DEBUG = False
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -23,7 +23,7 @@ MANAGERS = ADMINS
 SITE_ID = 1
 
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'gma.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'zohebbaig.pythonanywhere.com']
 
 LOGIN_URL = '/login/'
 
