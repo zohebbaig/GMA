@@ -44,10 +44,12 @@ class UserEditForm(forms.ModelForm):
                                widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.CharField(help_text="Please enter your email address.",
                             widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(help_text="Please enter a password.",
+                            widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email')
+        fields = ('first_name', 'last_name', 'email', 'password')
 
 #Creating the user profile object, forms passed to template and specifies how it is to get rendered
 class UserProfileForm(forms.ModelForm):
